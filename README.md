@@ -49,3 +49,61 @@ A aplicação está dividida em dois feitiços principais, cada um com sua funç
 2. Certifique-se de que as dependências estão instaladas, lançando o seguinte comando:
    ```bash
    pip install pillow
+
+## Requisitos
+
+# Chat com suporte a Unicast e Broadcast
+
+Este projeto implementa um sistema de chat com suporte a mensagens unicast e broadcast, utilizando o protocolo TCP. O sistema conta com funcionalidades de envio/recebimento de mensagens e uma interface gráfica para facilitar a interação dos usuários.
+
+## Requisitos Funcionais
+
+1. **Envio de mensagens unicast**  
+   - Permitir o envio de mensagens privadas a outro usuário através do comando:  
+     `\unicast nomedousuario mensagem`.
+
+2. **Recebimento de mensagens unicast**  
+   - Exibir mensagens privadas recebidas no formato:  
+     `"Privado" + mensagem`.
+
+3. **Envio de mensagens broadcast**  
+   - Permitir o envio de mensagens para todos os usuários conectados, utilizando o formato:  
+     `Remetente + mensagem`.
+
+4. **Recebimento de mensagens broadcast**  
+   - Exibir mensagens recebidas no modo broadcast com a indicação de remetente, no formato:  
+     `Remetente + mensagem`.
+
+5. **Identificação de usuários conectados**  
+   - O servidor deve:  
+     - Manter uma lista de todos os usuários conectados, identificando-os pelo endereço IP.  
+     - Notificar os demais usuários ao entrar ou sair da rede, informando o IP.
+
+6. **Interface gráfica**  
+   - Oferecer uma interface gráfica para facilitar as interações de envio e recebimento de mensagens.
+
+## Requisitos Não Funcionais
+
+1. **Protocolo de comunicação**  
+   - A comunicação entre cliente e servidor será realizada por meio do protocolo TCP.
+
+2. **Simulação de broadcast**  
+   - O envio de mensagens broadcast será simulado através de listas gerenciadas pelo servidor.
+
+3. **Eficiência do servidor**  
+   - O servidor deve gerenciar múltiplos usuários simultaneamente, mantendo tempos de resposta adequados.
+
+4. **Usabilidade da interface gráfica**  
+   - A interface gráfica será projetada para ser intuitiva e responsiva, garantindo uma boa experiência ao usuário.
+
+5. **Escalabilidade da rede**  
+   - O sistema deve suportar um número razoável de conexões simultâneas sem degradação significativa no desempenho.
+
+---
+
+## Tecnologias Utilizadas
+
+- **Linguagem:** (especificar, ex.: Python, Java, etc.)  
+- **Protocolos:** TCP  
+- **Bibliotecas/Frameworks:** (listar bibliotecas ou frameworks usados)
+
