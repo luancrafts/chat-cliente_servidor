@@ -2,8 +2,22 @@
 import socket as soco
 import threading
 
+# Configurações do servidor
+HOST = '192.168.99.103'
+PORTA = 9999
+
 # Lista de clientes conectados
 lista_clientes = []
+
+
+# Função para notificar a saída de um cliente
+def notificar_saida(nome_cliente):
+    mensagem = f"NOTIFICAÇÃO: {nome_cliente} saiu do chat."
+    for cliente in lista_clientes:
+        try:
+            cliente['conexao'].sendall(mensagem.encode('utf-8'))
+        except:
+            continue
 
 # Função para enviar a lista de participantes para todos os clientes
 def enviar_lista_participantes():
@@ -78,10 +92,6 @@ def receber_dados(conn, endereco):
         remover_cliente(conn)
         broadcast(f"{nome} saiu do chat!")
         enviar_lista_participantes()
-
-# Configurações do servidor
-HOST = 'localhost'
-PORTA = 9999
 
 # Criação do socket do servidor
 socket_servidor = soco.socket(soco.AF_INET, soco.SOCK_STREAM)
