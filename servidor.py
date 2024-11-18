@@ -24,9 +24,12 @@ def remover_cliente(conn):
 
 # Função para interpretar e enviar mensagens
 def enviar_mensagem(mensagem, remetente):
-    if mensagem.startswith("UNICAST:"):
-        # Mensagem unicast no formato "UNICAST:<destinatario>:<mensagem>"
-        _, destinatario, conteudo = mensagem.split(":", 2)
+    if '/unicast' in mensagem:
+        partes = mensagem.split(maxsplit=2)
+        # Mensagem unicast no formato "/unicast destinatario mensagem"
+        print(partes)
+        destinatario = partes[1]
+        conteudo = partes[2]
         unicast(f"[Privado] {conteudo}", destinatario, remetente)
     else:
         # Mensagem de broadcast
@@ -35,7 +38,7 @@ def enviar_mensagem(mensagem, remetente):
 # Função para enviar mensagem a todos (broadcast)
 def broadcast(mensagem, remetente=None):
     for cliente in lista_clientes:
-        if cliente['conexao'] != remetente:  # Não reenviar para o remetente
+        #if cliente['conexao'] != remetente:  # Não reenviar para o remetente
             try:
                 cliente['conexao'].sendall(mensagem.encode())
             except:
@@ -44,6 +47,8 @@ def broadcast(mensagem, remetente=None):
 # Função para enviar mensagem a um cliente específico (unicast)
 def unicast(mensagem, destinatario, remetente=None):
     for cliente in lista_clientes:
+        print(cliente)
+
         if cliente['nome'] == destinatario:
             try:
                 cliente['conexao'].sendall(mensagem.encode())
@@ -75,7 +80,7 @@ def receber_dados(conn, endereco):
         enviar_lista_participantes()
 
 # Configurações do servidor
-HOST = '192.168.99.103'
+HOST = 'localhost'
 PORTA = 9999
 
 # Criação do socket do servidor

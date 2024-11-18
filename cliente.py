@@ -5,7 +5,7 @@ from PIL import Image, ImageTk
 import threading
 
 # Configurações do servidor
-HOST = '192.168.99.103'
+HOST = 'localhost'
 PORTA = 9999
 
 # Criação do socket do cliente
@@ -24,6 +24,7 @@ def solicitar_nome():
     if not nome_usuario:
         print("Você precisa inserir um nome para continuar.")
         exit()
+    cliente_socket.send(nome_usuario.encode())
     return nome_usuario
 
 nome_usuario = solicitar_nome()
