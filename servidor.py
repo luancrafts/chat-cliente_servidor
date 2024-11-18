@@ -24,12 +24,13 @@ def remover_cliente(conn):
 
 # Função para interpretar e enviar mensagens
 def enviar_mensagem(mensagem, remetente):
-    if mensagem.startswith("BROADCAST:"):
-        _, nome_usuario, conteudo = mensagem.split(":", 2)
-        broadcast(f"{nome_usuario}: {conteudo}", remetente)
-    elif mensagem.startswith("UNICAST:"):
-        _, nome_usuario, destinatario, conteudo = mensagem.split(":", 3)
-        unicast(f"{nome_usuario} (privado): {conteudo}", destinatario, remetente)
+    if mensagem.startswith("UNICAST:"):
+        # Mensagem unicast no formato "UNICAST:<destinatario>:<mensagem>"
+        _, destinatario, conteudo = mensagem.split(":", 2)
+        unicast(f"[Privado] {conteudo}", destinatario, remetente)
+    else:
+        # Mensagem de broadcast
+        broadcast(mensagem, remetente)
 
 # Função para enviar mensagem a todos (broadcast)
 def broadcast(mensagem, remetente=None):
