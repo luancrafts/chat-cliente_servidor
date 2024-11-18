@@ -11,7 +11,7 @@ lista_clientes = []
 # Função para receber mensagens dos clientes
 def receber_dados(conn, endereco):
     nome = conn.recv(50).decode()
-    print(f"Conexão com sucesso com cliente {endereco}")
+    print(f"Conexão estabelecida com o cliente {endereco}")
     print(f"{nome} entrou no chat!")
 
     # Adicionar o novo cliente na lista
@@ -23,11 +23,12 @@ def receber_dados(conn, endereco):
     while True:
         try:
             mensagem = conn.recv(1024).decode()
-            print(f"{nome} >> {mensagem}")
+            print(f"{nome} enviou: {mensagem}")
             broadcast(f"{nome}: {mensagem}")
         except:
-            index = lista_clientes.index({'nome': nome, 'conexao': conn})
-            lista_clientes.remove(lista_clientes[index])
+            index = next((i for i, c in enumerate(lista_clientes) if c['conexao'] == conn), None)
+            if index is not None:
+                lista_clientes.pop(index)
             conn.close()
             print(f"{nome} saiu do chat.")
             broadcast(f"{nome} saiu do chat.")
@@ -39,8 +40,9 @@ def broadcast(mensagem):
         try:
             cliente['conexao'].sendall(mensagem.encode())
         except:
-            index = lista_clientes.index(cliente)
-            lista_clientes.remove(lista_clientes[index])
+            index = next((i for i, c in enumerate(lista_clientes) if c['conexao'] == cliente['conexao']), None)
+            if index is not None:
+                lista_clientes.pop(index)
             cliente['conexao'].close()
 
 # Configurações do servidor
