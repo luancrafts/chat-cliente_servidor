@@ -1,14 +1,26 @@
+#PONTIFICIA UNIVERSIDADE CATOLICA DO PARANA
+#LUAN FELIX PIMENTEL
+
+#Foi utilizado TCP e não UDP, o broadcast foi apenas simulado com listas (UDP poderia perder mensagem e mais complexo)
+#percebi que exige mais processamento do servidor
+#Entrega confiável das mensagens
+#Ordem correta dos pacotes
+#Verificação de erros
+#Controle de fluxo
+#Cadas mensagem é uma conexão TCP individual
+
+
 import socket as sock
 import tkinter as tk
 from tkinter import simpledialog
 from PIL import Image, ImageTk
 import threading
 
-# Configurações do servidor
+# Endereço IP e porta do servidor
 HOST = '192.168.99.103'
 PORTA = 9999
 
-# Criação do socket do cliente
+#Só tentativa de estabelecer conexão com o servidor
 try:
     cliente_socket = sock.socket(sock.AF_INET, sock.SOCK_STREAM)
     cliente_socket.connect((HOST, PORTA))
@@ -67,19 +79,25 @@ caixa_chat.pack()
 def enviar_mensagem(usuario):
     mensagem = caixa_entrada.get()
     destinatario = lista_destinatarios.get(tk.ACTIVE)
+    # aqui se foi selecionado todos ou nenhum
     if destinatario == "Todos" or not destinatario:
         mensagem_final = f"BROADCAST:{usuario}:{mensagem}"
+        #vai ficar assim: "BROADCAST:João:Olá pessoal!"
+
     else:
         mensagem_final = f"UNICAST:{usuario}:{destinatario}:{mensagem}"
+        #vai ficar assim: "UNICAST:João:Maria:Oi Maria, tudo bem?"
     
-    if mensagem:
-        cliente_socket.send(mensagem_final.encode())
-        caixa_entrada.delete(0, tk.END)
+    if mensagem: # Só envia se houver mensagem
+        #Sockets TCP/IP transmitem dados em forma de bytes e no pythonzinho são objetos unicode (fiz conversao string>bytes)
+        cliente_socket.send(mensagem_final.encode()) #codifica e envia
+        caixa_entrada.delete(0, tk.END)  #Limpa o campo de entrada
 
 # Thread para receber mensagens
 def receber_mensagens():
     while True:
         try:
+            #decodifica
             mensagem = cliente_socket.recv(1024).decode()
             caixa_chat.config(state=tk.NORMAL)
             caixa_chat.insert(tk.END, mensagem + "\n")
