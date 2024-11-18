@@ -1,8 +1,8 @@
 # Aplicativo de Chat
 
-Bem-vindos, caríssimos iniciantes na arte das comunicações encantadas!
+Saudações, caríssimos iniciantes na arte das comunicações wiccanas!
 
-Abaixo, vocês encontrarão um pequeno guia para dominar este **feitiço de interação conhecido como Aplicativo de Chat**—uma criação surpreendentemente fácil de conjurar, mas poderosa o suficiente para unir mentes distantes. Tudo isso com a graça dos encantamentos Python e das bibliotecas `socket` e `Tkinter`. Sigam atentamente e logo estarão trocando mensagens como feiticeiros experientes!
+Abaixo, vocês encontrarão um pequeno guia para dominar este **feitiço de interação conhecido como Aplicativo de Chat**—uma criação surpreendentemente fácil de conjurar, mas poderosa o suficiente para unir mentes distantes. Tudo isso com a graça dos encantamentos Python e das bibliotecas `socket` e `Tkinter`. Sigam atentamente e logo estarão trocando mensagens como bruxos experientes!
 
 ---
 
@@ -14,11 +14,11 @@ Abaixo, vocês encontrarão um pequeno guia para dominar este **feitiço de inte
 
 3. Com o cliente em mãos, digite seu feitiço (ou melhor, sua mensagem) no campo de entrada e clique em "Enviar". As palavras enviadas tanto por você quanto por outros colegas aparecerão magicamente na caixa de chat.
 
-4. Deseja ainda mais vozes em seu encantamento coletivo? Basta rodar o `cliente.py` em quantos terminais desejar, cada um trazendo um novo participante à sua comunhão digital!
+4. Deseja ainda mais vozes pro coro de DOWN DOWN DOWN THE ROAD DOWN THE WITCHES ROAD em seu encantamento coletivo? Basta rodar o `cliente.py` em quantos terminais desejar, cada um trazendo um novo participante à sua comunhão digital!
 
 ---
 
-## O Intrigante Funcionamento por Trás do Véu
+## Como o código está dividido:
 
 A aplicação está dividida em dois feitiços principais, cada um com sua função mágica:
 
