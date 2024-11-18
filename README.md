@@ -104,6 +104,5 @@ Este projeto implementa um sistema de chat com suporte a mensagens unicast e bro
 ## Tecnologias Utilizadas
 
 - **Linguagem:** (especificar, ex.: Python, Java, etc.)  
-- **Protocolos:** TCP  
-- **Bibliotecas/Frameworks:** (listar bibliotecas ou frameworks usados)
+- **Protocolos:** TCP
 
