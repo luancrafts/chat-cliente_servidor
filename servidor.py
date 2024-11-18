@@ -46,7 +46,7 @@ def broadcast(mensagem):
             cliente['conexao'].close()
 
 # Configurações do servidor
-HOST = 'localhost'
+HOST = '192.168.99.103'
 PORTA = 9999
 
 # Criação do socket do servidor
