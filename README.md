@@ -2,7 +2,7 @@
 
 Saudações, caríssimos iniciantes na arte das comunicações wiccanas!
 
-Abaixo, vocês encontrarão um pequeno guia para dominar este **feitiço de interação conhecido como Aplicativo de Chat**—uma criação surpreendentemente fácil de conjurar, mas poderosa o suficiente para unir mentes distantes. Tudo isso com a graça dos encantamentos Python e das bibliotecas `socket` e `Tkinter`. Sigam atentamente e logo estarão trocando mensagens como feiticeiros experientes!
+Abaixo, vocês encontrarão um pequeno guia para dominar este **feitiço de interação conhecido como Aplicativo de Chat**—uma criação surpreendentemente fácil de conjurar, mas poderosa o suficiente para unir mentes distantes. Tudo isso com a graça dos encantamentos Python e das bibliotecas `socket` e `Tkinter`. Sigam atentamente e logo estarão trocando mensagens como bruxos experientes!
 
 ---
 
